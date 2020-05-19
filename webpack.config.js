@@ -1,5 +1,4 @@
 const path = require('path');
-const nodeExternal = require('webpack-node-externals');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -8,7 +7,6 @@ module.exports = {
   entry: {
       bundled: path.resolve('./src/index.js'),
   },
-  externals: [nodeExternal()],
   output: {
     path: path.join(__dirname, 'dist'),
     publicPath: '/',
@@ -28,6 +26,9 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: "babel-loader",
+        options: {
+          presets: ["@babel/preset-env", "@babel/preset-react"],
+        },
       },
       {
         // Loads the javacript into html template provided.

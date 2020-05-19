@@ -12,10 +12,11 @@
   },
   "scripts": {
     "clean:dist": "rm -rf ./dist",
+    "copy:publicfiles": "cp ./public/*.ico ./dist && cp ./public/*.png ./dist",
     "dev:build:server": "PORT=3001 NODE_ENV=development webpack --config webpack.server.js --wb",
     "dev:build:web": "PORT=3001 NODE_ENV=development webpack --wb",
     "dev:start": "nodemon ./dist/server.js",
-    "start": "npm run clean:dist && npm run dev:build:server && npm run dev:build:web && npm run dev:start",
+    "start": "npm run clean:dist && npm run dev:build:server && npm run dev:build:web && npm run copy:publicfiles && npm run dev:start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
